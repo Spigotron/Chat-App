@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        #messages li {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-bottom: 1px black
+        }
+        #usernameRow, #roomRow, #messageRow {
+            margin-bottom: 20px;
+        }
+        #messageRow {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="welcome-banner">Welcome to the Secret Chat!</h1>
+    <div id="usernameRow">
+        <form id="username-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit">Join Chat</button>
+        </form>
+    </div>
+    <div id="roomRow" style="display:none;">
+        <form id="room-form">
+            <label for="room">Room:</label>
+            <input type="text" id="room" name="room" required>
+            <button type="submit">Enter Room</button>
+        </form>
+    </div>
+    <div id="messageRow">
+        <h2>Room: <span id="room-name"></span></h2>
+        <ul id="messages"></ul>
+        <form id="send-chat">
+            <input id="message" name="message" autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
